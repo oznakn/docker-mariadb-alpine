@@ -1,12 +1,8 @@
-FROM alpine:latest
+FROM alpine:3
 
-ENV LC_ALL=en_GB.UTF-8
+ENV LC_ALL=en_TR.UTF-8
 
-RUN mkdir /docker-entrypoint-initdb.d && \
-    apk -U upgrade && \
-    apk add --no-cache mariadb mariadb-client && \
-    apk add --no-cache tzdata && \
-    # clean up
+RUN apk -U upgrade && apk add --no-cache mariadb mariadb-client tzdata && \
     rm -rf /var/cache/apk/*
 
 # comment out a few problematic configuration values
